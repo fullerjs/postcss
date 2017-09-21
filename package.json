@@ -1,0 +1,21 @@
+{
+	"name": "fuller-postcss",
+	"version": "0.3.0",
+	"license": "MIT",
+	"description": "Fuller tool: post css",
+	"keywords": [
+		"css",
+		"postcss",
+		"fuller",
+		"build",
+		"automation"
+	],
+	"author": "Alexey Novikov (http://2dubs.com)",
+	"dependencies": {
+		"postcss": "^6.0.11"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:fullerjs/postcss.git"
+	}
+}
