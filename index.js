@@ -72,7 +72,7 @@ Tool.prototype = {
         return this.require(plugin);
       }
 
-      let name = Object.keys(plugin)[0];
+      const name = Object.keys(plugin)[0];
       const module = this.require(name);
       return module(plugin[name]);
     });

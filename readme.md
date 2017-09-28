@@ -3,6 +3,3 @@
 
 [For more info about fuller](https://github.com/fullerjs/fuller)
 
-Opens stream from the single file.
-
-For wildcards and multiple files use [src-files tool](https://github.com/fullerjs/fuller-src-files)
