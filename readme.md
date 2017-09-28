@@ -11,6 +11,6 @@
 
 * **postcss**
   - **plugins** – array. Post CSS plugins, can be a simple string, as `autoprefixer`, or if the plugin needs to be initialized `{ pluginname: pluginOptions }`
-  - map — boolean, [source map options](https://github.com/postcss/postcss/blob/master/docs/source-maps.md)
+  - map — [source map options](https://github.com/postcss/postcss/blob/master/docs/source-maps.md)
 
 License: MIT.
