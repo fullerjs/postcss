@@ -7,6 +7,7 @@ const Tool = function(fuller, options) {
 
   const opts = options.postcss;
   this.map = opts.map;
+  this.warnings = options.warnings || opts.warnings;
   this.processor = PostCSS(this.loadPlugins(opts.plugins));
 };
 
@@ -49,13 +50,15 @@ Tool.prototype = {
       });
     }
 
-    result
-      .warnings()
-      .forEach(warn => this.log(warn.toString()));
+    if (this.warnings) {
+      result
+        .warnings()
+        .forEach(warn => this.log(warn.toString()));
+    }
   },
 
   processError: function(error) {
-    if ( error.name === 'CssSyntaxError' ) {
+    if (error.name === 'CssSyntaxError') {
       this.error({
         message: error.reason,
         file: error.file,
@@ -73,15 +76,17 @@ Tool.prototype = {
       throw Error('No postcss plugins are defined');
     }
 
-    return plugins.map( plugin => {
-      if (typeof plugin === 'string') {
-        return this.require(plugin);
-      }
+    return plugins
+      .filter(plugin => plugin) // skip falsy values
+      .map(plugin => {
+        if (typeof plugin === 'string') {
+          return this.require(plugin);
+        }
 
-      const name = Object.keys(plugin)[0];
-      const module = this.require(name);
-      return module(plugin[name]);
-    });
+        const name = Object.keys(plugin)[0];
+        const module = this.require(name);
+        return module(plugin[name]);
+      })
   }
 };
 
